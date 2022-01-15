@@ -1,22 +1,31 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import React, { useState } from 'react';
+/*import { Route } from 'react-router';*/
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Dashboard } from './components/Dashboard';
+import Login from './components/Login';
 
 import './custom.css'
 
-export default class App extends Component {
-  static displayName = App.name;
 
-  render () {
+function App() {
+    const [token, setToken] = useState();
+
+    if (!token) {
+        return <Login setToken={setToken} />
+    }
+
     return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
+        <div className="wrapper">
+            <h1>Application</h1>
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/dashboard">
+                        <Dashboard />
+                    </Route>
+                </Switch>
+            </BrowserRouter>
+        </div>
     );
-  }
 }
+
+export default App;
