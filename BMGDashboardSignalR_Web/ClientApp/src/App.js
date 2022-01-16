@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-/*import { Route } from 'react-router';*/
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard } from './components/Dashboard';
 import Login from './components/Login';
@@ -19,7 +18,7 @@ function App() {
             <h1>Application</h1>
             <BrowserRouter>
                 <Switch>
-                    <Route path="/dashboard">
+                    <Route path="/">
                         <Dashboard />
                     </Route>
                 </Switch>

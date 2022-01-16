@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 async function loginUser(credentials) {
-    return fetch('https://localhost:7271/api/Message/StartConnection', {
-        method: 'GET',
+    return fetch('api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
     })
         .then(data => data.json())
 }
 
+
 export default function Login({ setToken }) {
-    const [username, setUserName] = useState();
+    const [username, setUserName] = useState()
     const [password, setPassword] = useState();
 
     const handleSubmit = async e => {
@@ -18,6 +23,7 @@ export default function Login({ setToken }) {
             username,
             password
         });
+        if (token.token !== "Fales")
         setToken(token);
     }
 

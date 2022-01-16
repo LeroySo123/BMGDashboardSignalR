@@ -1,0 +1,14 @@
+[
+  {
+    "ButtonID": "1",
+    "Text": "ON BREAK"
+  },
+  {
+    "ButtonID": "2",
+    "Text": "ON CALL"
+  },
+  {
+    "ButtonID": "3",
+    "Text": "IN MEETING"
+  }
+]
