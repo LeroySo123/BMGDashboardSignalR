@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard } from './components/Dashboard';
 import Login from './components/Login';
+import { Counter } from './components/Counter';
 
 import './custom.css'
 
@@ -15,11 +16,10 @@ function App() {
 
     return (
         <div className="wrapper">
-            <h1>Application</h1>
             <BrowserRouter>
                 <Switch>
                     <Route path="/">
-                        <Dashboard />
+                        <Dashboard dataFromParent={token.token} />
                     </Route>
                 </Switch>
             </BrowserRouter>

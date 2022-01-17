@@ -9,5 +9,11 @@ namespace BMGDashboardSignalR_Server.Services
             DBService db = new DBService();
             return db.GetActivityBtns();
         }
+
+        public string GetBtnTitleByID(string ID)
+        {
+            List<ActivityBtn> activityBtns = GetActivityBtns();
+            return activityBtns.Where(x => x.ButtonID == int.Parse(ID)).Select(x => x.Text).FirstOrDefault();
+        }
     }
 }

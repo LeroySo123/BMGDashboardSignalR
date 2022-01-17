@@ -2,7 +2,6 @@
   "name": "bmgdashboardsignalr_web",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:7091",
   "dependencies": {
     "bootstrap": "^5.1.0",
     "http-proxy-middleware": "^0.19.1",

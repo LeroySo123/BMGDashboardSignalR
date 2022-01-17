@@ -9,18 +9,19 @@ namespace BMGDashboardSignalR_Server.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
+        private readonly UserService _userService;
 
         public LoginController(ILogger<LoginController> logger)
         {
             _logger = logger;
+            _userService = new UserService();
         }
 
         [HttpPost]
         public string Login([FromBody] UserInform data)
         {
-            UserService userService = new UserService();
-            string str = userService.CheckLoginUserInform(data);
-            return str;
+            string returnUserInform = _userService.CheckLoginUserInform(data);
+            return returnUserInform;
         }
     }
 
