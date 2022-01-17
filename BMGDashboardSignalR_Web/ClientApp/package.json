@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aspnet/signalr": "^1.0.27",
     "bootstrap": "^5.1.0",
     "http-proxy-middleware": "^0.19.1",
     "jquery": "^3.5.1",
@@ -15,6 +16,7 @@
     "react-scripts": "^4.0.3",
     "reactstrap": "^8.9.0",
     "rimraf": "^2.6.2",
+    "signalr-client-react": "^0.2.1",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.3",
     "workbox-broadcast-update": "^5.1.3",

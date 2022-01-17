@@ -11,7 +11,7 @@ namespace BMGDashboardSignalR_Server.Services
         {
 
             //create the client connection to hub
-            var connection = new HubConnectionBuilder().WithUrl("https://localhost:7091/MessageHub").Build();
+            var connection = new HubConnectionBuilder().WithUrl("https://localhost:7091/messagehub").Build();
             //start the connection
             await connection.StartAsync();
 
@@ -32,7 +32,7 @@ namespace BMGDashboardSignalR_Server.Services
                 dashboardActivitie.Time = DateTime.Now;
             }
 
-
+            await connection.InvokeAsync("SendMessage", dashboardActivities);
         }
     }
 }

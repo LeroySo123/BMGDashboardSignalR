@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HubConnection } from 'signalr-client-react';
 
 function clickActivitybtn(data) {
     return fetch('https://localhost:7091/api/ActivityBtn/ClickActivityBtn', {
@@ -19,24 +20,41 @@ export class Dashboard extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { activitybtns: [], loading: true, usertoken: ""  };
+        this.state = { activitybtns: [], loading: true, usertoken: "", bookingMessage: "", Connection: null  };
     }
 
     incrementCounter(e) {
         clickActivitybtn(e);
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.populateActivityBtnData(this.props.dataFromParent);
+
+        const bookingHubConnection = new HubConnection('https://localhost:7091/messagehub')
+
+        this.setState({ Connection: bookingHubConnection }, () => {
+            this.state.Connection.start()
+                .then(() => console.log('SignalR Started'))
+                .catch(err => console.log('Error connecting SignalR - ' + err));
+
+            this.state.Connection.on('DashboardActivity', (message) => {
+                const bookingMessage = message;
+                this.setState({ bookingMessage: message });
+            });
+        });
     }
 
     renderActivityBtn(state) {
         return (
-                <div>
-                {state.activitybtns.map(activitybtn =>
+            <div className="container">
+                <div className="row">
+                    {state.activitybtns.map(activitybtn =>
+                        <div className="col-lg-2">
                     <button className="btn btn-primary" onClick={e => this.incrementCounter(activitybtn.buttonID + ';' + state.usertoken)} value={activitybtn.buttonID} key={activitybtn.buttonID} >{activitybtn.text}</button>
+                    </div>
                     )}
-               </div>
+                </div>
+            </div>
         );
     }
 
@@ -54,6 +72,8 @@ export class Dashboard extends Component {
                 <h1>Dashboard</h1>
                 <h3>Walcome <b>{userName[1]}</b></h3>
                 {contents}
+
+                {this.state.bookingMessage}
             </div>
         );
     }

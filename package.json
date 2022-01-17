@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@microsoft/signalr": "^6.0.1",
+    "signalr-client-react": "^0.2.1"
+  }
+}
