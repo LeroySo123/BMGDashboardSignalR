@@ -4,8 +4,8 @@ AspNetCore.SignalR
 AspNetCore.SignalR.Client
 
 ## Login user
-Name: James
+Name: James<br/>
 Password: 123456
 
-Name: Matt
+Name: Matt<br/>
 Password: 123456
