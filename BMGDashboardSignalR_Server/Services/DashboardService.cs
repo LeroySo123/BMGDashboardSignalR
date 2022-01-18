@@ -7,6 +7,7 @@ namespace BMGDashboardSignalR_Server.Services
     {
         static List<DashboardActivity> dashboardActivities = new List<DashboardActivity>();
 
+        //for update the user activity
         public async void UpdateUserActivity(string data)
         {
 
@@ -17,7 +18,7 @@ namespace BMGDashboardSignalR_Server.Services
 
             string[] arrData = data.Split(';');
             ActivityBtnService activityBtnService = new ActivityBtnService();
-            string btnText = activityBtnService.GetBtnTitleByID(arrData[0]);
+            string btnText = activityBtnService.GetBtnTextByID(arrData[0]);
 
             var dashboardActivitie = dashboardActivities.Where(x => x.UserID == int.Parse(arrData[1]) && x.UserName == arrData[2]).FirstOrDefault();
 

@@ -17,6 +17,7 @@ namespace BMGDashboardSignalR_Server.Controllers
             _userService = new UserService();
         }
 
+        //for user login
         [HttpPost]
         public string Login([FromBody] UserInform data)
         {

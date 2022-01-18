@@ -4,6 +4,7 @@ namespace BMGDashboardSignalR_Server.Services
 {
     public class UserService
     {
+        //for check login user information
         public string CheckLoginUserInform(UserInform data)
         {
             DBService db = new DBService();

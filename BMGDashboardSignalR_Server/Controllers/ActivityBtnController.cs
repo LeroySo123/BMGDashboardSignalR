@@ -1,6 +1,5 @@
 ﻿using BMGDashboardSignalR_Server.Model;
 using BMGDashboardSignalR_Server.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BMGDashboardSignalR_Server.Controllers
@@ -21,12 +20,14 @@ namespace BMGDashboardSignalR_Server.Controllers
             _dashboardService = new DashboardService();
         }
 
+        //for get the button
         [HttpGet]
         public IEnumerable<ActivityBtn> Get()
         {
             return _activityBtnService.GetActivityBtns();
         }
 
+        //for get user click button
         [HttpPost("ClickActivityBtn")]
         public IActionResult ClickActivityBtn([FromBody] string data)
         {
